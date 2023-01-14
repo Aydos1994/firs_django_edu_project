@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+
+{% for i in user_cart %}
+    Курс: {{ i.user_product.course_name }}<br>
+    Цена: {{ i.user_product.course_price }}<br><hr>
+
+{% endfor %}
+
+{% if user_cart %}
+    <form action="/confirm_order" method="post">
+        {% csrf_token %}
+        <button>Оформить заказ</button>
+    </form>
+{% endif %}
+
+</body>
+</html>
